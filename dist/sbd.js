@@ -268,7 +268,7 @@ exports.sentences = function(text, user_options) {
 
     // Split the text into words
     // - see http://blog.tompawlak.org/split-string-into-tokens-javascript
-    var words = text.trim().match(/\S+|\n/g);
+    var words = text.trim().match(/\S+|[\n\r]/g);
 
     var wordCount = 0;
     var index = 0;
@@ -283,6 +283,15 @@ exports.sentences = function(text, user_options) {
 
     for (var i=0, L=words.length; i < L; i++) {
         wordCount++;
+
+        // A new line counts as a sentence
+        if (  words[i] === '\n' || words[i] === '\r' ) {
+            sentences.push(current);
+            sentences.push( [ words[i] ] )
+            current   = [];
+            wordCount = 0;
+            continue;
+        }
 
         // Add the word to current sentence
         current.push(words[i]);
@@ -301,7 +310,6 @@ exports.sentences = function(text, user_options) {
             }
 
             sentences.push(current);
-
             wordCount = 0;
             current   = [];
 
