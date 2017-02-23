@@ -1,8 +1,8 @@
 {
   "name": "@knod/sbd",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "description": "Split text into sentence strings or word arrays with Sentence Boundary Detection (SBD). Based on http://github.com/Tessmore/sbd by Fabiën Tesselaar.",
-  "main": "lib/sbd.js",
+  "main": "dist/sbd.js",
   "scripts": {
     "test": "mocha -R spec",
     "build:js": "browserify lib/tokenizer.js --standalone sbd > dist/sbd.js",
