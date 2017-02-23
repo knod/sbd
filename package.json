@@ -19,7 +19,7 @@
     "detection",
     "boundary",
     "lexer",
-    "tokenizer",
+    "tokenizer"
   ],
   "author": {
     "name": "knod"
