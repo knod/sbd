@@ -28,19 +28,37 @@
     <script type="text/javascript">
         var app = angular.module('sbdApp', []);
 
+        var sentences = [];
+
         app.controller('Index', function($scope) {
             $scope.textContent = "On Jan. 20, former Sen. Barack Obama became the 44th President of the U.S. Millions attended the Inauguration.";
         });
 
         app.filter('tokenize', function() {
             return function(input) {
-                return tokenizer.sentences(input);
+
+                var radios     = document.getElementsByName('parse_type'),
+                    parse_type = null;
+
+                for (var i = 0, length = radios.length; i < length; i++) {
+                    if (radios[i].checked) {
+                        // do whatever you want with the checked radio
+                        parse_type = radios[i].value;
+
+                        // only one radio can be logically checked, don't check the rest
+                        break;
+                    }
+                }
+
+                sentences = tokenizer.sentences(input, {'parse_type': parse_type})
+
+                return sentences;
             };
         });
 
         app.filter('pluralize', function() {
             return function(input) {
-                var len = tokenizer.sentences(input).length || 0;
+                var len = sentences.length || 0;
 
                 if (len > 1) {
                     return len + " sentences";
@@ -81,6 +99,19 @@
 
         <div class="row padpad">
             <div class="col-md-6">
+                <div>
+                    <label>What do you want to turn this text into?</label>
+                    <div>
+                        <div>
+                        <input type="radio" name="parse_type"  id="parse_type_strings" value="strings"></input>
+                        <label for="parse_type_strings">Get text as a list of strings</label>
+                    </div>
+                    <div>
+                        <input checked type="radio" name="parse_type" id="parse_type_words" value="words"></input>
+                        <label for="parse_type_words">Get text as a list of sentences each of which are a list of words</label>
+                    </div>
+                    </div>
+                </div>
                 <div class="form-group">
                     <label>Type your text here:</label>
                     <textarea class="form-control" ng-model='textContent' rows='12' style='width:100%'></textarea>
