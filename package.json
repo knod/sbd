@@ -9,7 +9,7 @@
     "build:minify": "uglifyjs dist/sbd.js > dist/sbd.min.js",
     "build": "npm run build:js && npm run build:minify"
   },
-  "homepage": "http://github.com/knod/sbd",
+  "homepage": "https://knod.github.io/sbd/",
   "repository": {
     "type": "git",
     "url": "https://github.com/knod/sbd.git"

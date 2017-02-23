@@ -1,4 +1,4 @@
-Sentence Boundary Detection (SBD)
+#Sentence Boundary Detection (SBD)
 ==================
 
 Split text into sentences with a `vanilla` rule based approach (i.e working ~95% of the time).
@@ -8,6 +8,10 @@ Split text into sentences with a `vanilla` rule based approach (i.e working ~95%
     * Skips numbers/currency
     * Skips urls, websites, email addresses, phone nr.
     * Counts ellipsis and ?! as single punctuation
+
+## Attribution
+This is a fork of [http://github.com/Tessmore/sbd](http://github.com/Tessmore/sbd) by Fabiën Tesselaar. Most of this README is the same.
+
 
 ## Installation
 
@@ -24,11 +28,29 @@ var tokenizer = require('sbd');
 var text = "On Jan. 20, former Sen. Barack Obama became the 44th President of the U.S. Millions attended the Inauguration.";
 var sentences = tokenizer.sentences(text, optional_options);
 
+// Returns:
 // [
 //  'On Jan. 20, former Sen. Barack Obama became the 44th President of the U.S.',
 //  'Millions attended the Inauguration.',
 // ]
 ```
+
+or
+
+```javascript
+var tokenizer = require('sbd');
+
+var text = "There are many copies. And they have a plan.";
+var sentences = tokenizer.sentences(text, {parse_type: 'words'});
+
+// Returns:
+// [
+//  [ 'There', 'are', 'many', 'copies.' ],
+//  [ 'And', 'they', 'have', 'a', 'plan.' ]
+// ]
+```
+
+See a demo at [https://knod.github.io/sbd/](https://knod.github.io/sbd/)
 
 
 #### Optional options
@@ -60,10 +82,13 @@ var options = {
 
 You can run unit tests with `npm test`.
 
-If you feel something is missing, you can open an issue stating the problem sentence and desired result. If code is unclear give me a @mention. Pull requests are welcome.
+If you feel something is missing, you can open an issue at [http://github.com/knod/sbd/issues](http://github.com/knod/sbd/issues) stating the problem sentence and desired result. If code is unclear give me a @mention. Pull requests are welcome.
 
 
 ## Building the (minified) scripts
+
+(If you already have browserify, there's no need to include the first line)
+
 
 ```
 npm install -g browserify
@@ -75,3 +100,4 @@ npm run-script build
 
 * Update tests for new capabilities
 * New tests to show failing cases
+* Remove html parsing. The combination of the two should happen in a separate module.
