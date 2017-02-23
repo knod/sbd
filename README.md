@@ -13,7 +13,7 @@ Split text into sentences with a `vanilla` rule based approach (i.e working ~95%
 
 Use [npm](http://npmjs.org):
 
-    $ npm install sbd
+    $ npm install @knod/sbd
 
 
 ## How to
@@ -33,18 +33,23 @@ var sentences = tokenizer.sentences(text, optional_options);
 
 #### Optional options
 
+Defaults:
+
 ```
 var options = {
-    "newline_boundaries" : false,
-    "html_boundaries"    : false,
-    "sanitize"           : false,
-    "allowed_tags"       : false,
-    "abbreviations"      : null
+    "parse_type"          : "strings",
+    "newline_boundaries"  : false,
+    "html_boundaries"     : false,
+    "html_boundaries_tags": ["p","div","ul","ol"],
+    "sanitize"            : false,
+    "allowed_tags"        : false,
+    "abbreviations"       : null
 };
 ```
 
-* `newline_boundaries`, force sentence split at newlines
-* `html_boundaries`, force sentence split at specific tags (br, and closing p, div, ul, ol)
+* `parse_type`: Value can be either 'strings' or 'words'. 'strings' will turn your text into a list of sentences, each of which is a string. 'words' will turn your text into a list of sentences, each of which is a list of words.
+* `newline_boundaries`: Force sentence split at newlines
+* `html_boundaries`: Force sentence split at specific tags (br, and closing p, div, ul, ol)
 * `sanitize`: If you don't expect nor want html in your text.
 * `allowed_tags`: To sanitize html, the library [santize-html](https://github.com/punkave/sanitize-html) is used. You can pass the allowed tags option.
 * `abbreviations`: list of abbreviations to override the original ones for use with other languages. Don't put dots in abbreviations.
@@ -65,3 +70,8 @@ npm install -g browserify
 
 npm run-script build
 ```
+
+## Next
+
+* Update tests for new capabilities
+* New tests to show failing cases
