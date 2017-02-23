@@ -2,7 +2,7 @@
   "name": "sbd",
   "version": "1.0.12",
   "description": "Split text into sentences with Sentence Boundary Detection (SBD).",
-  "main": "lib/tokenizer.js",
+  "main": "lib/sbd.js",
   "scripts": {
     "test": "mocha -R spec",
     "build:js": "browserify lib/tokenizer.js --standalone tokenizer > dist/sbd.js",
