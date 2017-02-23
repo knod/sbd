@@ -14,6 +14,9 @@
     "type": "git",
     "url": "https://github.com/knod/sbd.git"
   },
+  "bugs": {
+    "url" : "http://github.com/knod/sbd/issues"
+  },
   "keywords": [
     "sentence",
     "detection",
