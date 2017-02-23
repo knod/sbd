@@ -1,7 +1,7 @@
 {
-  "name": "sbd",
+  "name": "@knod/sbd",
   "version": "1.0.12",
-  "description": "Split text into sentences with Sentence Boundary Detection (SBD).",
+  "description": "Split text into sentence strings or word arrays with Sentence Boundary Detection (SBD). Based on http://github.com/Tessmore/sbd by Fabiën Tesselaar.",
   "main": "lib/sbd.js",
   "scripts": {
     "test": "mocha -R spec",
@@ -9,18 +9,20 @@
     "build:minify": "uglifyjs dist/sbd.js > dist/sbd.min.js",
     "build": "npm run build:js && npm run build:minify"
   },
-  "homepage": "http://github.com/Tessmore/sbd",
+  "homepage": "http://github.com/knod/sbd",
   "repository": {
     "type": "git",
-    "url": "https://github.com/Tessmore/sbd.git"
+    "url": "https://github.com/knod/sbd.git"
   },
   "keywords": [
     "sentence",
     "detection",
-    "boundary"
+    "boundary",
+    "lexer",
+    "tokenizer",
   ],
   "author": {
-    "name": "Fabiën Tesselaar"
+    "name": "knod"
   },
   "license": "MIT",
   "readmeFilename": "README.md",
