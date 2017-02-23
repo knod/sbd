@@ -50,6 +50,8 @@
                     }
                 }
 
+                // var `sbd` comes from the window/root here, where the file puts it in
+                // case node isn't available
                 sentences = sbd.sentences(input, {'parse_type': parse_type})
 
                 return sentences;
